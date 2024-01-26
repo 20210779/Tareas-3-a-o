@@ -1,0 +1,48 @@
+CREATE DATABASE TechSolutions;
+USE TechSolutions; 
+
+
+ 
+ create table departamentos(
+ id_departamento int primary key,
+ nombre_departamento varchar(40)
+ );
+ 
+ create table cargos(
+ id_cargo int primary key,
+ nombre_de_cargo varchar(20)
+ );
+ 
+ 
+create table empleados(
+ id_empleado int primary key,
+ id_departamento int,
+ id_cargo int,
+ nombre varchar(30),
+ apellido varchar(30),
+ salario decimal,
+ fechadeinicio date,
+constraint fk_departamento
+ foreign key (id_departamento)
+ references departamentos(id_departamento),
+ constraint fk_cargo
+ foreign key (id_cargo)
+ references cargos(id_cargo)
+ );
+ 
+ create table proyectos(
+ id_proyecto int primary key,
+ nombre_proyecto varchar(30)
+ );
+ 
+ create table proyecto_de_empleados(
+ id_proyectos_de_empleado int primary key,
+ id_empleado int,
+ id_proyecto int,
+ constraint fk_empleado
+ foreign key (id_empleado)
+ references empleados(id_empleado),
+ constraint fk_proyecto
+ foreign key (id_proyecto)
+ references proyectos(id_proyecto)
+ ); 
